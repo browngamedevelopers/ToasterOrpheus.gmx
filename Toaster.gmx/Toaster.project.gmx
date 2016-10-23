@@ -17,6 +17,7 @@
       <sprite>sprites\spr_bar</sprite>
       <sprite>sprites\spr_bar_location_indicator</sprite>
     </sprites>
+    <sprite>sprites\spr_roomEnd</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
@@ -27,9 +28,12 @@
     <object>objects\obj_flameToast</object>
     <object>objects\obj_burntToast</object>
     <object>objects\obj_flopToast</object>
+    <object>objects\obj_roomEnd</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room0</room>
+    <room>rooms\room1</room>
+    <room>rooms\room2</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>
