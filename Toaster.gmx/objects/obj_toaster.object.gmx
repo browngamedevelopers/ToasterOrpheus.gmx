@@ -56,7 +56,7 @@ in_slow_motion = false;
 time_toasting = 0;
 
 //constant variables
-time_toasting_max = 5000;
+time_toasting_max = 1500 * 1500;
 sprite_bar_height = 48;
 sprite_bar_width = 800;
 sprite_indicator_size = 32;
@@ -114,7 +114,7 @@ if(mouse_check_button_pressed(mb_left)) {
 
 
 if(mouse_check_button(mb_left)){
-    time_toasting = current_time - time;
+    time_toasting = (current_time - time) * (current_time - time);
 }
 
 if(mouse_check_button_released(mb_left)) {
@@ -141,8 +141,13 @@ if(mouse_check_button_released(mb_left)) {
         toast.image_angle = point_direction(x, y, mouse_x, mouse_y);
         toast.speed = 10;
         angle = arctan( (y - mouse_y) / (x - mouse_x) );
-        vsp = -toast.speed * dcos( angle );
-        hsp = -toast.speed * dsin( angle );
+        
+        dist = sqrt((x - mouse_x)*(x - mouse_x)+(y - mouse_y)*(y - mouse_y))
+        dx = (mouse_x - x) / dist
+        dy = (mouse_y - y) / dist
+        
+        vsp = -toast.speed - dx;
+        hsp = -toast.speed - dy;
     }
     else if(newTime &lt; 2000) {
         flopToast = instance_create(x, y, obj_flopToast);
