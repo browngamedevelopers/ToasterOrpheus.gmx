@@ -31,6 +31,7 @@ hsp = 0;
 vsp = 0;
 jumpSpeed = 7;
 moveSpeed = 4;
+afterLaunch = 1;
 </string>
           </argument>
         </arguments>
@@ -53,7 +54,46 @@ moveSpeed = 4;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string></string>
+            <string>///Basic Player Movement
+//Get the player's movement input
+key_right = keyboard_check(ord("D"));
+key_left = -keyboard_check(ord("A"));
+key_jump = keyboard_check_pressed(vk_space);
+
+//React to inputs
+move = key_left + key_right;
+if(afterLaunch == 1) {
+    hsp = move * moveSpeed;
+}
+if(vsp &lt; 10) {
+    vsp += grav;
+}
+
+//Player can only jump while on a wall
+if(place_meeting(x, y + 1, obj_wall)) {
+    afterLaunch = 1;
+    vsp = key_jump * -jumpSpeed;
+}
+//If there is a wall/block to the right/left and player is moving in that direction,
+//move as far in the direction of the wall as possible.
+if(place_meeting(x + hsp, y, obj_wall)) {
+    while(!place_meeting(x + sign(hsp), y, obj_wall)) {
+        x += sign(hsp);
+    }
+    hsp = 0;
+}
+x += hsp;
+
+//if there is a wall beneath/above player and player is moving in that direction,
+//move as far in the direction of the wall as possible.
+if(place_meeting(x, y + vsp, obj_wall)) {
+    while(!place_meeting(x, y + sign(vsp), obj_wall)) {
+        y += sign(vsp);
+    }
+    vsp = 0;
+}
+y += vsp;
+</string>
           </argument>
         </arguments>
       </action>
@@ -90,18 +130,27 @@ if(mouse_check_button_released(mb_left)) {
         flameToast.direction = point_direction(x, y, mouse_x, mouse_y);
         flameToast.image_angle = point_direction(x, y, mouse_x, mouse_y);
         flameToast.speed = 15;
-        angle = arctan( (y - mouse_y) / (x - mouse_x) );
-        vsp = -flameToast.speed * dcos( angle );
-        hsp = -flameToast.speed * dsin( angle );
+        afterLaunch = 0;
+
+        dist = sqrt( (x - mouse_x)*(x - mouse_x) + (y - mouse_y)*(y - mouse_y) );
+        dx = (x - mouse_x) / dist;
+        dy = (y - mouse_y) / dist;
+        vsp = vsp + (flameToast.speed * dy);
+        hsp = hsp + (flameToast.speed * dx);
     }
+            
     else if(newTime &gt; 2000) {
         toast = instance_create(x, y, obj_toast);
         toast.direction = point_direction(x, y, mouse_x, mouse_y);
         toast.image_angle = point_direction(x, y, mouse_x, mouse_y);
         toast.speed = 10;
-        angle = arctan( (y - mouse_y) / (x - mouse_x) );
-        vsp = -toast.speed * dcos( angle );
-        hsp = -toast.speed * dsin( angle );
+        afterLaunch = 0;
+        
+        dist = sqrt( (x - mouse_x)*(x - mouse_x) + (y - mouse_y)*(y - mouse_y) );
+        dx = (x - mouse_x) / dist;
+        dy = (y - mouse_y) / dist;
+        vsp = vsp + (toast.speed * dy);
+        hsp = hsp + (toast.speed * dx);
     }
     else if(newTime &lt; 2000) {
         flopToast = instance_create(x, y, obj_flopToast);
@@ -110,62 +159,6 @@ if(mouse_check_button_released(mb_left)) {
         flopToast.speed = 10;
     }
 }
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Basic Player Movement
-//Get the player's movement input
-key_right = keyboard_check(ord("D"));
-key_left = -keyboard_check(ord("A"));
-key_jump = keyboard_check_pressed(vk_space);
-
-//React to inputs
-move = key_left + key_right;
-hsp = move * moveSpeed;
-if(vsp &lt; 10) {
-    vsp += grav;
-}
-
-//Player can only jump while on a wall
-if(place_meeting(x, y + 1, obj_wall)) {
-    vsp = key_jump * -jumpSpeed;
-}
-//If there is a wall/block to the right/left and player is moving in that direction,
-//move as far in the direction of the wall as possible.
-if(place_meeting(x + hsp, y, obj_wall)) {
-    while(!place_meeting(x + sign(hsp), y, obj_wall)) {
-        x += sign(hsp);
-    }
-    hsp = 0;
-}
-x += hsp;
-
-//if there is a wall beneath/above player and player is moving in that direction,
-//move as far in the direction of the wall as possible.
-if(place_meeting(x, y + vsp, obj_wall)) {
-    while(!place_meeting(x, y + sign(vsp), obj_wall)) {
-        y += sign(vsp);
-    }
-    vsp = 0;
-}
-y += vsp;
 </string>
           </argument>
         </arguments>
