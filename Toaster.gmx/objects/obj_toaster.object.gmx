@@ -118,7 +118,7 @@ key_jump = keyboard_check_pressed(vk_space);
 //React to inputs
 move = key_left + key_right;
 if(afterLaunch == 1) {
-    hsp = .5 * move * moveSpeed;
+    hsp = move * moveSpeed;
 }
 if(vsp &lt; 10) {
     vsp += grav * global.deltaT;
@@ -140,8 +140,8 @@ if(place_meeting(x + dvx, y, obj_wall)) {
     while(!place_meeting(x + sign(dvx), y, obj_wall)) {
         x += sign(dvx);
     }
-    hsp = -.5 * hsp;
-    dvx = -.5 * dvx;
+    hsp = 0;
+    dvx = 0;
 }
 x += dvx;
 
@@ -151,14 +151,8 @@ if(place_meeting(x, y + dvy, obj_wall)) {
     while(!place_meeting(x, y + sign(dvy), obj_wall)) {
         y += sign(dvy);
     }
-    if(sign(vsp) == -1) {
-        vsp = -.5 * vsp;
-        dvy = -.5 * dvy;
-    }
-    else {
-        vsp = 0;
-        dvy = 0;
-    }
+    vsp = 0;
+    dvy = 0;
 }
 y += dvy;
 </string>
@@ -182,7 +176,7 @@ y += dvy;
           <argument>
             <kind>1</kind>
             <string>///Fire Toast
-if(mouse_check_button_pressed(mb_left) &amp;&amp; !place_meeting(x, y+1, obj_wall)) {
+if(mouse_check_button_pressed(mb_left)) {
     time = current_time;
     in_slow_motion = true;
     time_toasting = 0;
@@ -217,14 +211,11 @@ if(mouse_check_button_released(mb_left) &amp;&amp; isLaunching) {
         dist = sqrt( (x - mouse_x)*(x - mouse_x) + (y - mouse_y)*(y - mouse_y) );
         dx = (x - mouse_x) / dist;
         dy = (y - mouse_y) / dist;
-
+        vsp = (spd * dy);
+        hsp = (spd * dx);
+        
         flameToast.vsp = spd * -dy;
         flameToast.hsp = spd * -dx;
-        
-        if(!place_meeting(x, y + 1, obj_wall)) {
-            vsp = (spd * dy);
-            hsp = (spd * dx);
-        }
     }
             
     else if(newTime &gt; 1034) {
@@ -237,14 +228,12 @@ if(mouse_check_button_released(mb_left) &amp;&amp; isLaunching) {
         dist = sqrt( (x - mouse_x)*(x - mouse_x) + (y - mouse_y)*(y - mouse_y) );
         dx = (x - mouse_x) / dist;
         dy = (y - mouse_y) / dist;
-
+        vsp = (spd * dy);
+        hsp = (spd * dx);
+        
         toast.vsp = spd * -dy;
         toast.hsp = spd * -dx;
-        
-        if(!place_meeting(x, y + 1, obj_wall)) {
-            vsp = (spd * dy);
-            hsp = (spd * dx);
-        }
+
     }
     else if(newTime &lt; 1034) {
         flopToast = instance_create(x, y, obj_flopToast);
