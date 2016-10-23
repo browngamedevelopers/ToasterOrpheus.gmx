@@ -94,36 +94,28 @@ if(instance_count &gt; 0 &amp;&amp; alarm[0] == -1) {
             <string>///Gravity physics for flopToast
 
 if(!position_meeting(x + sign(hsp), y, obj_wall)) {
-    vsp += grav * global.deltaT;
+    vsp += grav;
 }
-
-
-//shift ot global time space
-var dvx = global.deltaT * hsp;
-var dvy = global.deltaT * vsp;
-
 
 //If there is a wall/block to the right/left and player is moving in that direction,
 //move as far in the direction of the wall as possible.
-if(place_meeting(x + dvx, y, obj_wall)) {
-    while(!place_meeting(x + sign(dvx), y, obj_wall)) {
-        x += sign(dvx);
+if(place_meeting(x + hsp, y, obj_wall)) {
+    while(!place_meeting(x + sign(hsp), y, obj_wall)) {
+        x += sign(hsp);
     }
-    hsp = -.5 * hsp;
-    dvx = -.5 * dvx;
+    hsp = -.5 * hsp
 }
-x += dvx;
+x += hsp;
 
 //if there is a wall beneath/above player and player is moving in that direction,
 //move as far in the direction of the wall as possible.
-if(place_meeting(x, y + dvy, obj_wall)) {
-    while(!place_meeting(x, y + sign(dvy), obj_wall)) {
-        y += sign(dvy);
+if(place_meeting(x, y + vsp, obj_wall)) {
+    while(!place_meeting(x, y + sign(vsp), obj_wall)) {
+        y += sign(vsp);
     }
-    vsp = -.5 * vsp;
-    dvy = -.5 * dvy;
+    vsp = -.5 *vsp;
 }
-y += dvy;
+y += vsp;
 
 </string>
           </argument>
