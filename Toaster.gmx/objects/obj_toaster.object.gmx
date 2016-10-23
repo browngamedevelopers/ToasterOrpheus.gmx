@@ -192,13 +192,13 @@ if(mouse_check_button_released(mb_left)) {
     global.deltaT = 1;
     in_slow_motion = false;
     newTime = current_time - time;
-    if(newTime &gt; 4000) {
+    if(newTime &gt; 1372) {
         burntToast = instance_create(x, y, obj_burntToast);
         burntToast.direction = point_direction(x, y, mouse_x, mouse_y);
         burntToast.image_angle = point_direction(x, y, mouse_x, mouse_y);
         burntToast.speed = 0;
     }
-    else if(newTime &gt; 3500) {
+    else if(newTime &gt; 1297) {
         flameToast = instance_create(x, y, obj_flameToast);
         flameToast.direction = point_direction(x, y, mouse_x, mouse_y);
         flameToast.image_angle = point_direction(x, y, mouse_x, mouse_y);
@@ -215,7 +215,7 @@ if(mouse_check_button_released(mb_left)) {
         flameToast.hsp = spd * -dx;
     }
             
-    else if(newTime &gt; 2000) {
+    else if(newTime &gt; 1034) {
         toast = instance_create(x, y, obj_toast);
         toast.direction = point_direction(x, y, mouse_x, mouse_y);
         toast.image_angle = point_direction(x, y, mouse_x, mouse_y);
@@ -232,7 +232,7 @@ if(mouse_check_button_released(mb_left)) {
         toast.hsp = spd * -dx;
 
     }
-    else if(newTime &lt; 2000) {
+    else if(newTime &lt; 1034) {
         flopToast = instance_create(x, y, obj_flopToast);
         flopToast.direction = point_direction(x, y, mouse_x, mouse_y);
         flopToast.image_angle = point_direction(x, y, mouse_x, mouse_y);
