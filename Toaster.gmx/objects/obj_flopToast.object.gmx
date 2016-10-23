@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>grav = .6;
+            <string>///Creates grav, hsp, and vsp
+grav = .4;
 hsp = 0;
 vsp = 0;
 </string>
@@ -92,7 +93,7 @@ if(instance_count &gt; 0 &amp;&amp; alarm[0] == -1) {
             <kind>1</kind>
             <string>///Gravity physics for flopToast
 
-if(!position_meeting(x, y + sign(vsp), obj_wall) &amp;&amp; !position_meeting(x + sign(hsp), y, obj_wall)) {
+if(!position_meeting(x + sign(hsp), y, obj_wall)) {
     vsp += grav;
 }
 
@@ -102,8 +103,7 @@ if(place_meeting(x + hsp, y, obj_wall)) {
     while(!place_meeting(x + sign(hsp), y, obj_wall)) {
         x += sign(hsp);
     }
-    hsp = 0;
-    vsp = 0;
+    hsp = -.5 * hsp
 }
 x += hsp;
 
@@ -113,8 +113,7 @@ if(place_meeting(x, y + vsp, obj_wall)) {
     while(!place_meeting(x, y + sign(vsp), obj_wall)) {
         y += sign(vsp);
     }
-    vsp = 0;
-    hsp = 0;
+    vsp = -.5 *vsp;
 }
 y += vsp;
 
