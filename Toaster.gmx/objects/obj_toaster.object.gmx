@@ -32,6 +32,7 @@ vsp = 0;
 jumpSpeed = 7;
 moveSpeed = 4;
 afterLaunch = 1;
+isLaunching = false;
 </string>
           </argument>
         </arguments>
@@ -175,20 +176,22 @@ y += dvy;
           <argument>
             <kind>1</kind>
             <string>///Fire Toast
-if(mouse_check_button_pressed(mb_left)) {
+if(mouse_check_button_pressed(mb_left) &amp;&amp; !place_meeting(x, y+1, obj_wall)) {
     time = current_time;
     in_slow_motion = true;
     time_toasting = 0;
+    isLaunching = true;
     
-    global.deltaT = .1;
+    global.deltaT = .05;
 }
 
 
-if(mouse_check_button(mb_left)){
+if(mouse_check_button(mb_left) &amp;&amp; isLaunching){
     time_toasting = (current_time - time) * (current_time - time);
 }
 
-if(mouse_check_button_released(mb_left)) {
+if(mouse_check_button_released(mb_left) &amp;&amp; isLaunching) {
+    isLaunching = false;
     global.deltaT = 1;
     in_slow_motion = false;
     newTime = current_time - time;
@@ -208,8 +211,8 @@ if(mouse_check_button_released(mb_left)) {
         dist = sqrt( (x - mouse_x)*(x - mouse_x) + (y - mouse_y)*(y - mouse_y) );
         dx = (x - mouse_x) / dist;
         dy = (y - mouse_y) / dist;
-        vsp = vsp + (spd * dy);
-        hsp = hsp + (spd * dx);
+        vsp = (spd * dy);
+        hsp = (spd * dx);
         
         flameToast.vsp = spd * -dy;
         flameToast.hsp = spd * -dx;
@@ -225,8 +228,8 @@ if(mouse_check_button_released(mb_left)) {
         dist = sqrt( (x - mouse_x)*(x - mouse_x) + (y - mouse_y)*(y - mouse_y) );
         dx = (x - mouse_x) / dist;
         dy = (y - mouse_y) / dist;
-        vsp = vsp + (spd * dy);
-        hsp = hsp + (spd * dx);
+        vsp = (spd * dy);
+        hsp = (spd * dx);
         
         toast.vsp = spd * -dy;
         toast.hsp = spd * -dx;
