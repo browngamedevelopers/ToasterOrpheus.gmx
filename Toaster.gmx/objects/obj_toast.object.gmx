@@ -91,27 +91,35 @@ if(instance_count &gt; 0 &amp;&amp; alarm[0] == -1) {
             <kind>1</kind>
             <string>///Gravity physics for toast
 
+//set up global time space
+var dvx = hsp * global.deltaT;
+var dvy = vsp * global.deltaT;
+
 //If there is a wall/block to the right/left and player is moving in that direction,
 //move as far in the direction of the wall as possible.
-if(place_meeting(x + hsp, y, obj_wall)) {
-    while(!place_meeting(x + sign(hsp), y, obj_wall)) {
-        x += sign(hsp);
+if(place_meeting(x + dvx, y, obj_wall)) {
+    while(!place_meeting(x + sign(dvx), y, obj_wall)) {
+        x += sign(dvx);
     }
     hsp = 0;
     vsp = 0;
+    dvx = 0;
+    dvy = 0;
 }
-x += hsp;
+x += dvx;
 
 //if there is a wall beneath/above player and player is moving in that direction,
 //move as far in the direction of the wall as possible.
-if(place_meeting(x, y + vsp, obj_wall)) {
-    while(!place_meeting(x, y + sign(vsp), obj_wall)) {
-        y += sign(vsp);
+if(place_meeting(x, y + dvy, obj_wall)) {
+    while(!place_meeting(x, y + sign(dvy), obj_wall)) {
+        y += sign(dvy);
     }
     vsp = 0;
     hsp = 0;
+    dvx = 0;
+    dvy = 0;
 }
-y += vsp;
+y += dvy;
 
 </string>
           </argument>

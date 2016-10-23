@@ -85,7 +85,7 @@ barY = 50;
           <argument>
             <kind>1</kind>
             <string>/// initialize global time progression
-global.deltaT = .1;
+global.deltaT = 1;
 </string>
           </argument>
         </arguments>
@@ -140,6 +140,7 @@ if(place_meeting(x + dvx, y, obj_wall)) {
         x += sign(dvx);
     }
     hsp = 0;
+    dvx = 0;
 }
 x += dvx;
 
@@ -149,6 +150,7 @@ if(place_meeting(x, y + dvy, obj_wall)) {
     while(!place_meeting(x, y + sign(dvy), obj_wall)) {
         y += sign(dvy);
     }
+    vsp = 0;
     dvy = 0;
 }
 y += dvy;
