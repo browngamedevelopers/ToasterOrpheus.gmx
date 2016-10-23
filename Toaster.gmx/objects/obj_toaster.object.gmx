@@ -200,7 +200,7 @@ if(mouse_check_button_released(mb_left)) {
         flameToast = instance_create(x, y, obj_flameToast);
         flameToast.direction = point_direction(x, y, mouse_x, mouse_y);
         flameToast.image_angle = point_direction(x, y, mouse_x, mouse_y);
-        flameToast.speed = 15;
+        spd = 15;
         afterLaunch = 0;
 
         dist = sqrt( (x - mouse_x)*(x - mouse_x) + (y - mouse_y)*(y - mouse_y) );
@@ -208,27 +208,39 @@ if(mouse_check_button_released(mb_left)) {
         dy = (y - mouse_y) / dist;
         vsp = vsp + (flameToast.speed * dy);
         hsp = hsp + (flameToast.speed * dx);
+        
+        flameToast.vsp = spd * -dy;
+        flameToast.hsp = spd * -dx;
     }
             
     else if(newTime &gt; 2000) {
         toast = instance_create(x, y, obj_toast);
         toast.direction = point_direction(x, y, mouse_x, mouse_y);
         toast.image_angle = point_direction(x, y, mouse_x, mouse_y);
-        toast.speed = 10;
+        spd = 10;
         afterLaunch = 0;
         
         dist = sqrt( (x - mouse_x)*(x - mouse_x) + (y - mouse_y)*(y - mouse_y) );
         dx = (x - mouse_x) / dist;
         dy = (y - mouse_y) / dist;
-        vsp = vsp + (toast.speed * dy);
-        hsp = hsp + (toast.speed * dx);
+        vsp = vsp + (spd * dy);
+        hsp = hsp + (spd * dx);
+        
+        toast.vsp = spd * -dy;
+        toast.hsp = spd * -dx;
 
     }
     else if(newTime &lt; 2000) {
         flopToast = instance_create(x, y, obj_flopToast);
         flopToast.direction = point_direction(x, y, mouse_x, mouse_y);
         flopToast.image_angle = point_direction(x, y, mouse_x, mouse_y);
-        flopToast.speed = 10;
+        spd = 10;
+        
+        dist = sqrt( (x - mouse_x)*(x - mouse_x) + (y - mouse_y)*(y - mouse_y) );
+        dx = (x - mouse_x) / dist;
+        dy = (y - mouse_y) / dist;
+        flopToast.vsp = (-spd * dy);
+        flopToast.hsp = (-spd * dx);
     }
 }
 </string>
