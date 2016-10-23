@@ -36,6 +36,38 @@ afterLaunch = 1;
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// variables for toaster slider
+in_slow_motion = false;
+time_toasting = 0;
+
+//constant variables
+time_toasting_max = 1500 * 1500;
+sprite_bar_height = 48;
+sprite_bar_width = 800;
+sprite_indicator_size = 32;
+sprite_element_size = 64;
+barX = 100;
+barY = 50;
+</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event eventtype="3" enumb="0">
       <action>
@@ -116,8 +148,17 @@ y += vsp;
             <string>///Fire Toast
 if(mouse_check_button_pressed(mb_left)) {
     time = current_time;
+    in_slow_motion = true;
+    time_toasting = 0;
 }
+
+
+if(mouse_check_button(mb_left)){
+    time_toasting = (current_time - time) * (current_time - time);
+}
+
 if(mouse_check_button_released(mb_left)) {
+    in_slow_motion = false;
     newTime = current_time - time;
     if(newTime &gt; 4000) {
         burntToast = instance_create(x, y, obj_burntToast);
@@ -151,6 +192,7 @@ if(mouse_check_button_released(mb_left)) {
         dy = (y - mouse_y) / dist;
         vsp = vsp + (toast.speed * dy);
         hsp = hsp + (toast.speed * dx);
+
     }
     else if(newTime &lt; 2000) {
         flopToast = instance_create(x, y, obj_flopToast);
@@ -159,6 +201,48 @@ if(mouse_check_button_released(mb_left)) {
         flopToast.speed = 10;
     }
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Draw Object and Slider Element
+draw_self()
+
+if(in_slow_motion){
+    draw_sprite(spr_bar, 0, barX, barY)
+    
+    draw_sprite(spr_slider_element, 0, 
+                    barX + 
+                    time_toasting * sprite_bar_width / time_toasting_max - 
+                    sprite_element_size / 2,
+                    barY + sprite_bar_height - 10 +
+                    sprite_indicator_size - 10);
+    
+    draw_sprite(spr_bar_location_indicator, 0, 
+                    barX + 
+                    time_toasting * sprite_bar_width / time_toasting_max - 
+                    sprite_indicator_size / 2,
+                    barY + sprite_bar_height - 19);
+}
+
 </string>
           </argument>
         </arguments>

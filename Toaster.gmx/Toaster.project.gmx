@@ -12,6 +12,11 @@
     <sprite>sprites\spr_flopToast</sprite>
     <sprite>sprites\spr_flameToast</sprite>
     <sprite>sprites\spr_burntToast</sprite>
+    <sprites name="ToastReadinessBar">
+      <sprite>sprites\spr_slider_element</sprite>
+      <sprite>sprites\spr_bar</sprite>
+      <sprite>sprites\spr_bar_location_indicator</sprite>
+    </sprites>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
