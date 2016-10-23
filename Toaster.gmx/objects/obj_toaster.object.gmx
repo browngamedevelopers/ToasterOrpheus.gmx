@@ -34,7 +34,7 @@ moveSpeed = 4;
 afterLaunch = 1;
 isLaunching = false;
 
-cooldown = 0;
+heat = 0;
 </string>
           </argument>
         </arguments>
@@ -183,86 +183,111 @@ y += dvy;
           <argument>
             <kind>1</kind>
             <string>///Fire Toast
-if(current_time - cooldown &gt; 500){
-    if(mouse_check_button_pressed(mb_left)) {
-        time = current_time;
-        in_slow_motion = true;
-        time_toasting = 0;
-        isLaunching = true;
-        
-        global.deltaT = .05;
+
+if(heat &gt; 0 &amp;&amp; !isLaunching){
+    heat -= .05;
+}
+if(place_meeting(x, y + 1, obj_wall)) {
+    if(heat &gt; 0 &amp;&amp; !isLaunching){
+        heat -= .3;
     }
+}
+
+if(mouse_check_button_pressed(mb_left) &amp;&amp; heat &lt; 15) {
+    time = current_time;
+    in_slow_motion = true;
+    time_toasting = 0;
+    isLaunching = true;
     
+    global.deltaT = .05;
     
-    if(mouse_check_button(mb_left) &amp;&amp; isLaunching){
-        time_toasting = (current_time - time) * (current_time - time);
-    }
+    bar_time = 1500 * power(.95, heat);
+    time_toasting_max = bar_time * bar_time;
+}
+
+
+if(mouse_check_button(mb_left) &amp;&amp; isLaunching){
+    time_toasting = (current_time - time) * (current_time - time);
     
-    if(mouse_check_button_released(mb_left) &amp;&amp; isLaunching) {
+    if(current_time - time &gt; bar_time){
         isLaunching = false;
         global.deltaT = 1;
         in_slow_motion = false;
         newTime = current_time - time;
-        if(newTime &gt; 1372) {
-            burntToast = instance_create(x, y, obj_burntToast);
-            burntToast.direction = point_direction(x, y, mouse_x, mouse_y);
-            burntToast.image_angle = point_direction(x, y, mouse_x, mouse_y);
-            burntToast.speed = 0;
-        }
-        else if(newTime &gt; 1297) {
-            flameToast = instance_create(x, y, obj_flameToast);
-            flameToast.direction = point_direction(x, y, mouse_x, mouse_y);
-            flameToast.image_angle = point_direction(x, y, mouse_x, mouse_y);
-            spd = 20;
-            afterLaunch = 0;
-    
-            dist = sqrt( (x - mouse_x)*(x - mouse_x) + (y - mouse_y)*(y - mouse_y) );
-            dx = (x - mouse_x) / dist;
-            dy = (y - mouse_y) / dist;
-            vsp = (spd * dy);
-            hsp = (spd * dx);
-            
-            flameToast.vsp = spd * -dy;
-            flameToast.hsp = spd * -dx;
-            
-            cooldown = current_time;
-        }
-                
-        else if(newTime &gt; 1034) {
-            toast = instance_create(x, y, obj_toast);
-            toast.direction = point_direction(x, y, mouse_x, mouse_y);
-            toast.image_angle = point_direction(x, y, mouse_x, mouse_y);
-            spd = 14;
-            afterLaunch = 0;
-            
-            dist = sqrt( (x - mouse_x)*(x - mouse_x) + (y - mouse_y)*(y - mouse_y) );
-            dx = (x - mouse_x) / dist;
-            dy = (y - mouse_y) / dist;
-            vsp = (spd * dy);
-            hsp = (spd * dx);
-            
-            toast.vsp = spd * -dy;
-            toast.hsp = spd * -dx;
-    
-            cooldown = current_time;
-        }
-        else if(newTime &lt; 1034) {
-            flopToast = instance_create(x, y, obj_flopToast);
-            flopToast.direction = point_direction(x, y, mouse_x, mouse_y);
-            flopToast.image_angle = point_direction(x, y, mouse_x, mouse_y);
-            spd = 10;
-            
-            dist = sqrt( (x - mouse_x)*(x - mouse_x) + (y - mouse_y)*(y - mouse_y) );
-            dx = (x - mouse_x) / dist;
-            dy = (y - mouse_y) / dist;
-            flopToast.vsp = (-spd * dy);
-            flopToast.hsp = (-spd * dx);
-        }
+        
+        heat += newTime*5/bar_time;
+        burntToast = instance_create(x, y, obj_burntToast);
+        burntToast.direction = point_direction(x, y, mouse_x, mouse_y);
+        burntToast.image_angle = point_direction(x, y, mouse_x, mouse_y);
+        burntToast.speed = 0;
     }
 }
-else{
-    time = current_time;
+
+if(mouse_check_button_released(mb_left) &amp;&amp; isLaunching) {
+    isLaunching = false;
+    global.deltaT = 1;
+    in_slow_motion = false;
+    newTime = current_time - time;
+    
+    heat += newTime*5/bar_time;
+    
+    if(newTime &gt; 1372*bar_time/1500) {
+        burntToast = instance_create(x, y, obj_burntToast);
+        burntToast.direction = point_direction(x, y, mouse_x, mouse_y);
+        burntToast.image_angle = point_direction(x, y, mouse_x, mouse_y);
+        burntToast.speed = 0;
+    }
+    else if(newTime &gt; 1297*bar_time/1500) {
+        flameToast = instance_create(x, y, obj_flameToast);
+        flameToast.direction = point_direction(x, y, mouse_x, mouse_y);
+        flameToast.image_angle = point_direction(x, y, mouse_x, mouse_y);
+        spd = 20;
+        afterLaunch = 0;
+
+        dist = sqrt( (x - mouse_x)*(x - mouse_x) + (y - mouse_y)*(y - mouse_y) );
+        dx = (x - mouse_x) / dist;
+        dy = (y - mouse_y) / dist;
+        vsp = (spd * dy);
+        hsp = (spd * dx);
+        
+        flameToast.vsp = spd * -dy;
+        flameToast.hsp = spd * -dx;
+        
+        cooldown = current_time;
+    }
+            
+    else if(newTime &gt; 1034*bar_time/1500) {
+        toast = instance_create(x, y, obj_toast);
+        toast.direction = point_direction(x, y, mouse_x, mouse_y);
+        toast.image_angle = point_direction(x, y, mouse_x, mouse_y);
+        spd = 14;
+        afterLaunch = 0;
+        
+        dist = sqrt( (x - mouse_x)*(x - mouse_x) + (y - mouse_y)*(y - mouse_y) );
+        dx = (x - mouse_x) / dist;
+        dy = (y - mouse_y) / dist;
+        vsp = (spd * dy);
+        hsp = (spd * dx);
+        
+        toast.vsp = spd * -dy;
+        toast.hsp = spd * -dx;
+
+        cooldown = current_time;
+    }
+    else if(newTime &lt; 1034*bar_time/1500) {
+        flopToast = instance_create(x, y, obj_flopToast);
+        flopToast.direction = point_direction(x, y, mouse_x, mouse_y);
+        flopToast.image_angle = point_direction(x, y, mouse_x, mouse_y);
+        spd = 10;
+        
+        dist = sqrt( (x - mouse_x)*(x - mouse_x) + (y - mouse_y)*(y - mouse_y) );
+        dx = (x - mouse_x) / dist;
+        dy = (y - mouse_y) / dist;
+        flopToast.vsp = (-spd * dy);
+        flopToast.hsp = (-spd * dx);
+    }
 }
+
 </string>
           </argument>
         </arguments>
@@ -310,6 +335,11 @@ else{
           <argument>
             <kind>1</kind>
             <string>/// Draw Object and Slider Element
+if(heat &gt; 0){
+    self.image_blend = make_colour_rgb(255, 255 - heat * 10, 255 - heat * 10);
+}else{
+    self.image_blend = c_white;
+}
 draw_self()
 
 if(in_slow_motion){
