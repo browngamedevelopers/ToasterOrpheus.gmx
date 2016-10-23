@@ -68,6 +68,28 @@ barY = 50;
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// initialize global time progression
+global.deltaT = 1;
+</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event eventtype="3" enumb="0">
       <action>
@@ -98,7 +120,7 @@ if(afterLaunch == 1) {
     hsp = move * moveSpeed;
 }
 if(vsp &lt; 10) {
-    vsp += grav;
+    vsp += grav * global.deltaT;
 }
 
 //Player can only jump while on a wall
@@ -106,25 +128,32 @@ if(place_meeting(x, y + 1, obj_wall)) {
     afterLaunch = 1;
     vsp = key_jump * -jumpSpeed;
 }
+
+//get movement speeds in new time space
+var dvx = hsp * global.deltaT
+var dvy = vsp * global.deltaT
+
 //If there is a wall/block to the right/left and player is moving in that direction,
 //move as far in the direction of the wall as possible.
-if(place_meeting(x + hsp, y, obj_wall)) {
-    while(!place_meeting(x + sign(hsp), y, obj_wall)) {
-        x += sign(hsp);
+if(place_meeting(x + dvx, y, obj_wall)) {
+    while(!place_meeting(x + sign(dvx), y, obj_wall)) {
+        x += sign(dvx);
     }
     hsp = 0;
+    dvx = 0;
 }
-x += hsp;
+x += dvx;
 
 //if there is a wall beneath/above player and player is moving in that direction,
 //move as far in the direction of the wall as possible.
-if(place_meeting(x, y + vsp, obj_wall)) {
-    while(!place_meeting(x, y + sign(vsp), obj_wall)) {
-        y += sign(vsp);
+if(place_meeting(x, y + dvy, obj_wall)) {
+    while(!place_meeting(x, y + sign(dvy), obj_wall)) {
+        y += sign(dvy);
     }
     vsp = 0;
+    dvy = 0;
 }
-y += vsp;
+y += dvy;
 </string>
           </argument>
         </arguments>
@@ -150,6 +179,8 @@ if(mouse_check_button_pressed(mb_left)) {
     time = current_time;
     in_slow_motion = true;
     time_toasting = 0;
+    
+    global.deltaT = .1;
 }
 
 
@@ -158,15 +189,16 @@ if(mouse_check_button(mb_left)){
 }
 
 if(mouse_check_button_released(mb_left)) {
+    global.deltaT = 1;
     in_slow_motion = false;
     newTime = current_time - time;
-    if(newTime &gt; 4000) {
+    if(newTime &gt; 1372) {
         burntToast = instance_create(x, y, obj_burntToast);
         burntToast.direction = point_direction(x, y, mouse_x, mouse_y);
         burntToast.image_angle = point_direction(x, y, mouse_x, mouse_y);
         burntToast.speed = 0;
     }
-    else if(newTime &gt; 3500) {
+    else if(newTime &gt; 1297) {
         flameToast = instance_create(x, y, obj_flameToast);
         flameToast.direction = point_direction(x, y, mouse_x, mouse_y);
         flameToast.image_angle = point_direction(x, y, mouse_x, mouse_y);
@@ -183,7 +215,7 @@ if(mouse_check_button_released(mb_left)) {
         flameToast.hsp = spd * -dx;
     }
             
-    else if(newTime &gt; 2000) {
+    else if(newTime &gt; 1034) {
         toast = instance_create(x, y, obj_toast);
         toast.direction = point_direction(x, y, mouse_x, mouse_y);
         toast.image_angle = point_direction(x, y, mouse_x, mouse_y);
@@ -200,7 +232,7 @@ if(mouse_check_button_released(mb_left)) {
         toast.hsp = spd * -dx;
 
     }
-    else if(newTime &lt; 2000) {
+    else if(newTime &lt; 1034) {
         flopToast = instance_create(x, y, obj_flopToast);
         flopToast.direction = point_direction(x, y, mouse_x, mouse_y);
         flopToast.image_angle = point_direction(x, y, mouse_x, mouse_y);
