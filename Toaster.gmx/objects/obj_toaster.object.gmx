@@ -52,11 +52,11 @@ moveSpeed = 4;
           <argument>
             <kind>1</kind>
             <string>/// variables for toaster slider
-in_slow_motion = true;
-time_toasting = 500;
+in_slow_motion = false;
+time_toasting = 0;
 
 //constant variables
-time_toasting_max = 1000;
+time_toasting_max = 5000;
 sprite_bar_height = 48;
 sprite_bar_width = 800;
 sprite_indicator_size = 32;
@@ -108,8 +108,17 @@ barY = 50;
             <string>///Fire Toast
 if(mouse_check_button_pressed(mb_left)) {
     time = current_time;
+    in_slow_motion = true;
+    time_toasting = 0;
 }
+
+
+if(mouse_check_button(mb_left)){
+    time_toasting = current_time - time;
+}
+
 if(mouse_check_button_released(mb_left)) {
+    in_slow_motion = false;
     newTime = current_time - time;
     if(newTime &gt; 4000) {
         burntToast = instance_create(x, y, obj_burntToast);
