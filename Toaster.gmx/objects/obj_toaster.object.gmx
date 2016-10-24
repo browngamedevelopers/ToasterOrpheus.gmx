@@ -35,6 +35,9 @@ afterLaunch = 1;
 isLaunching = false;
 
 heat = 0;
+
+imagestart = 8;
+imageend = 23;
 </string>
           </argument>
         </arguments>
@@ -94,6 +97,29 @@ global.deltaT = 1;
         </arguments>
       </action>
     </event>
+    <event eventtype="2" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>room_goto(1);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
@@ -119,6 +145,16 @@ key_jump = keyboard_check_pressed(vk_space);
 
 //React to inputs
 move = key_left + key_right;
+
+image_speed =  abs(move) * .35;
+if(move &gt; 0){
+    imagestart = 8;
+    imageend = 23
+}else{
+    imagestart = 24;
+    imageend = 39;
+}
+
 if(afterLaunch == 1) {
     hsp = .5 * move * moveSpeed;
 }
@@ -130,6 +166,8 @@ if(vsp &lt; 10) {
 if(place_meeting(x, y + 1, obj_wall)) {
     afterLaunch = 1;
     vsp = key_jump * -jumpSpeed;
+}else{
+    image_index = 0;
 }
 
 //get movement speeds in new time space
@@ -162,6 +200,8 @@ if(place_meeting(x, y + dvy, obj_wall)) {
     }
 }
 y += dvy;
+
+image_index = max(imagestart, image_index mod imageend);
 </string>
           </argument>
         </arguments>
@@ -207,6 +247,8 @@ if(mouse_check_button_pressed(mb_left) &amp;&amp; heat &lt; 15) {
 
 
 if(mouse_check_button(mb_left) &amp;&amp; isLaunching){
+    image_angle = -arctan2(mouse_y - y, mouse_x - x) * 180 / 3.1415926 - 90;
+
     time_toasting = (current_time - time) * (current_time - time);
     
     if(current_time - time &gt; bar_time){
@@ -293,7 +335,7 @@ if(mouse_check_button_released(mb_left) &amp;&amp; isLaunching) {
         </arguments>
       </action>
     </event>
-    <event eventtype="4" ename="obj_roomEnd">
+    <event eventtype="4" ename="obj_fridge">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -310,8 +352,7 @@ if(mouse_check_button_released(mb_left) &amp;&amp; isLaunching) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>room_goto(room2);
-
+            <string>alarm[1] = room_speed * 2;
 </string>
           </argument>
         </arguments>

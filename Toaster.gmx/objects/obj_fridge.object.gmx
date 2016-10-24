@@ -50,7 +50,7 @@ image_speed = 0;
           <argument>
             <kind>1</kind>
             <string>if(distance_to_object(obj_toaster) &lt; 100){
-    image_speed = 0.2;
+    image_speed = 0.1;
 }
 
 </string>

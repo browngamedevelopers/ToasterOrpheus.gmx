@@ -17,14 +17,12 @@
       <sprite>sprites\spr_bar</sprite>
       <sprite>sprites\spr_bar_location_indicator</sprite>
     </sprites>
-<<<<<<< HEAD
-    <sprite>sprites\spr_roomEnd</sprite>
-=======
     <sprite>sprites\spr_fridge</sprite>
->>>>>>> 5ad64151983f3b788c89e9f33508152905a65731
+    <sprite>sprites\microwave</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background0</background>
+    <background>background\background1</background>
   </backgrounds>
   <paths name="paths"/>
   <objects name="objects">
@@ -34,16 +32,12 @@
     <object>objects\obj_flameToast</object>
     <object>objects\obj_burntToast</object>
     <object>objects\obj_flopToast</object>
-<<<<<<< HEAD
-    <object>objects\obj_roomEnd</object>
-=======
     <object>objects\obj_fridge</object>
->>>>>>> 5ad64151983f3b788c89e9f33508152905a65731
+    <object>objects\obj_microwave</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room0</room>
     <room>rooms\room1</room>
-    <room>rooms\room2</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>
