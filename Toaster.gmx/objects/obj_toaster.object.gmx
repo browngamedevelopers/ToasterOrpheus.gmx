@@ -35,9 +35,11 @@ afterLaunch = 1;
 isLaunching = false;
 
 heat = 0;
-
 imagestart = 8;
 imageend = 23;
+alarmOn = false;
+
+
 </string>
           </argument>
         </arguments>
@@ -352,7 +354,9 @@ if(mouse_check_button_released(mb_left) &amp;&amp; isLaunching) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>alarm[1] = room_speed * 2;
+            <string>///Create fadeOut object
+instance_create(0, 0, obj_fadeOut);
+
 </string>
           </argument>
         </arguments>

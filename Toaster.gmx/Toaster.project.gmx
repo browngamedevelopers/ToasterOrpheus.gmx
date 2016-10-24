@@ -19,6 +19,8 @@
     </sprites>
     <sprite>sprites\spr_fridge</sprite>
     <sprite>sprites\microwave</sprite>
+    <sprite>sprites\spr_roomEnd</sprite>
+    <sprite>sprites\spr_fadeOut</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background0</background>
@@ -34,10 +36,14 @@
     <object>objects\obj_flopToast</object>
     <object>objects\obj_fridge</object>
     <object>objects\obj_microwave</object>
+    <object>objects\obj_roomEnd</object>
+    <object>objects\obj_loadingFridge</object>
+    <object>objects\obj_fadeOut</object>
   </objects>
   <rooms name="rooms">
-    <room>rooms\room0</room>
     <room>rooms\room1</room>
+    <room>rooms\LoadingScreen</room>
+    <room>rooms\room2</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>
