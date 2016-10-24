@@ -38,7 +38,7 @@ heat = 0;
 imagestart = 8;
 imageend = 23;
 alarmOn = false;
-
+last_move = 0;
 
 </string>
           </argument>
@@ -146,6 +146,7 @@ key_left = -keyboard_check(ord("A"));
 key_jump = keyboard_check_pressed(vk_space);
 
 //React to inputs
+
 move = key_left + key_right;
 
 image_speed =  abs(move) * .35;
@@ -166,10 +167,18 @@ if(vsp &lt; 10) {
 
 //Player can only jump while on a wall
 if(place_meeting(x, y + 1, obj_wall)) {
+    image_angle = 0;
     afterLaunch = 1;
     vsp = key_jump * -jumpSpeed;
+    if(move != last_move){
+        audio_stop_all();
+        if(move != 0){
+            audio_play_sound(walk, 1, true);
+        }
+    }
 }else{
     image_index = 0;
+    audio_stop_all();
 }
 
 //get movement speeds in new time space
@@ -204,6 +213,8 @@ if(place_meeting(x, y + dvy, obj_wall)) {
 y += dvy;
 
 image_index = max(imagestart, image_index mod imageend);
+
+last_move = move;
 </string>
           </argument>
         </arguments>
@@ -259,6 +270,8 @@ if(mouse_check_button(mb_left) &amp;&amp; isLaunching){
         in_slow_motion = false;
         newTime = current_time - time;
         
+        audio_play_sound(snd_brun,1,false);
+        
         heat += newTime*5/bar_time;
         burntToast = instance_create(x, y, obj_burntToast);
         burntToast.direction = point_direction(x, y, mouse_x, mouse_y);
@@ -276,6 +289,9 @@ if(mouse_check_button_released(mb_left) &amp;&amp; isLaunching) {
     heat += newTime*5/bar_time;
     
     if(newTime &gt; 1372*bar_time/1500) {
+    
+        audio_play_sound(snd_brun,1,false);
+        
         burntToast = instance_create(x, y, obj_burntToast);
         burntToast.direction = point_direction(x, y, mouse_x, mouse_y);
         burntToast.image_angle = point_direction(x, y, mouse_x, mouse_y);
