@@ -51,7 +51,7 @@ vsp = 0;
             <kind>1</kind>
             <string>// setup animation
 image_speed = .25;
-rot_speed = random(10) - 5
+
 </string>
           </argument>
         </arguments>
@@ -115,8 +115,6 @@ if(instance_count &gt; 0 &amp;&amp; alarm[0] == -1) {
           <argument>
             <kind>1</kind>
             <string>///Gravity physics for flopToast
-image_angle = image_angle + 5 * rot_speed;
-
 if(!position_meeting(x + sign(hsp), y, obj_wall)) {
     vsp += grav;
 }

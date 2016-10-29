@@ -24,10 +24,14 @@
     <sprite>sprites\microwave</sprite>
     <sprite>sprites\spr_roomEnd</sprite>
     <sprite>sprites\spr_fadeOut</sprite>
+    <sprite>sprites\spr_spikes</sprite>
+    <sprite>sprites\spr_blender</sprite>
+    <sprite>sprites\spr_blenderBlade</sprite>
+    <sprite>sprites\spr_gears</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background0</background>
-    <background>background\background1</background>
+    <background>background\background2</background>
   </backgrounds>
   <paths name="paths"/>
   <objects name="objects">
@@ -42,11 +46,14 @@
     <object>objects\obj_roomEnd</object>
     <object>objects\obj_loadingFridge</object>
     <object>objects\obj_fadeOut</object>
+    <object>objects\obj_gameOverFade</object>
+    <object>objects\obj_blender</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room1</room>
     <room>rooms\LoadingScreen</room>
     <room>rooms\room2</room>
+    <room>rooms\gameOver</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>
