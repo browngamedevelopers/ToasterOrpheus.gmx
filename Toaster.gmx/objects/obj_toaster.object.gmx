@@ -146,7 +146,7 @@ if(heat &gt; 0 &amp;&amp; !isLaunching){
     heat -= .05;
 }
 //If on the ground and not launching, heat decrements faster
-if(place_meeting(x, y + 1, obj_wall)) {
+if(place_meeting(x, y + 1, obj_wall_col)) {
     if(heat &gt; 0 &amp;&amp; !isLaunching){
         heat -= .3;
     }
@@ -318,7 +318,7 @@ if(vsp &lt; 10) {
 }
 
 //Player can only jump while on a wall
-if(place_meeting(x, y + 1, obj_wall)) {
+if(place_meeting(x, y + 1, obj_wall_col)) {
     image_angle = 0;
     afterLaunch = 1;
     vsp = key_jump * -jumpSpeed;
@@ -339,8 +339,8 @@ var dvy = vsp * global.deltaT
 
 //If there is a wall/block to the right/left and player is moving in that direction,
 //move as far in the direction of the wall as possible.
-if(place_meeting(x + dvx, y, obj_wall)) {
-    while(!place_meeting(x + sign(dvx), y, obj_wall)) {
+if(place_meeting(x + dvx, y, obj_wall_col)) {
+    while(!place_meeting(x + sign(dvx), y, obj_wall_col)) {
         x += sign(dvx);
     }
     hsp = -.5 * hsp;
@@ -350,8 +350,8 @@ x += dvx;
 
 //if there is a wall beneath/above player and player is moving in that direction,
 //move as far in the direction of the wall as possible.
-if(place_meeting(x, y + dvy, obj_wall)) {
-    while(!place_meeting(x, y + sign(dvy), obj_wall)) {
+if(place_meeting(x, y + dvy, obj_wall_col)) {
+    while(!place_meeting(x, y + sign(dvy), obj_wall_col)) {
         y += sign(dvy);
     }
     if(sign(vsp) == -1){

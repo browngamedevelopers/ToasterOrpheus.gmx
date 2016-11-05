@@ -97,8 +97,8 @@ var dvy = vsp * global.deltaT;
 
 //If there is a wall/block to the right/left and player is moving in that direction,
 //move as far in the direction of the wall as possible.
-if(place_meeting(x + dvx, y, obj_wall)) {
-    while(!place_meeting(x + sign(dvx), y, obj_wall)) {
+if(place_meeting(x + dvx, y, obj_wall_col)) {
+    while(!place_meeting(x + sign(dvx), y, obj_wall_col)) {
         x += sign(dvx);
     }
     hsp = 0;
@@ -110,8 +110,8 @@ x += dvx;
 
 //if there is a wall beneath/above player and player is moving in that direction,
 //move as far in the direction of the wall as possible.
-if(place_meeting(x, y + dvy, obj_wall)) {
-    while(!place_meeting(x, y + sign(dvy), obj_wall)) {
+if(place_meeting(x, y + dvy, obj_wall_col)) {
+    while(!place_meeting(x, y + sign(dvy), obj_wall_col)) {
         y += sign(dvy);
     }
     vsp = 0;

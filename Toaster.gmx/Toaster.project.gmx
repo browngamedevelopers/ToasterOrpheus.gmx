@@ -30,7 +30,21 @@
     <sprites name="Environment Sprites">
       <sprite>sprites\spr_roomEnd</sprite>
       <sprite>sprites\spr_spikes</sprite>
+      <sprite>sprites\spr_platform</sprite>
       <sprite>sprites\spr_wall</sprite>
+      <sprites name="props">
+        <sprite>sprites\spr_box1</sprite>
+        <sprite>sprites\spr_ceiling</sprite>
+        <sprite>sprites\spr_wall1</sprite>
+        <sprite>sprites\spr_wall2</sprite>
+        <sprite>sprites\spr_box2</sprite>
+        <sprite>sprites\spr_box3</sprite>
+      </sprites>
+      <sprites name="floors">
+        <sprite>sprites\floor1</sprite>
+        <sprite>sprites\floor2</sprite>
+        <sprite>sprites\floor3</sprite>
+      </sprites>
     </sprites>
     <sprite>sprites\spr_fadeOut</sprite>
     <sprite>sprites\spr_gears</sprite>
@@ -60,9 +74,23 @@
       <object>objects\obj_enemy_deathtouch</object>
     </objects>
     <objects name="Environmeny Objects">
+      <object>objects\obj_wall_col</object>
       <object>objects\obj_wall</object>
       <object>objects\obj_roomEnd</object>
       <object>objects\obj_spikes</object>
+      <objects name="props">
+        <object>objects\obj_box1</object>
+        <object>objects\obj_wall1</object>
+        <object>objects\obj_wall2</object>
+        <object>objects\obj_box2</object>
+        <object>objects\obj_box3</object>
+        <object>objects\obj_ceiling</object>
+      </objects>
+      <objects name="floors">
+        <object>objects\obj_floor1</object>
+        <object>objects\obj_floor2</object>
+        <object>objects\obj_floor3</object>
+      </objects>
     </objects>
     <object>objects\obj_fadeOut</object>
     <object>objects\obj_gameOverFade</object>

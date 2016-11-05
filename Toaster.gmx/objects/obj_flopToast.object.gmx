@@ -115,14 +115,14 @@ if(instance_count &gt; 0 &amp;&amp; alarm[0] == -1) {
           <argument>
             <kind>1</kind>
             <string>///Gravity physics for flopToast
-if(!position_meeting(x + sign(hsp), y, obj_wall)) {
+if(!position_meeting(x + sign(hsp), y, obj_wall_col)) {
     vsp += grav;
 }
 
 //If there is a wall/block to the right/left and player is moving in that direction,
 //move as far in the direction of the wall as possible.
-if(place_meeting(x + hsp, y, obj_wall)) {
-    while(!place_meeting(x + sign(hsp), y, obj_wall)) {
+if(place_meeting(x + hsp, y, obj_wall_col)) {
+    while(!place_meeting(x + sign(hsp), y, obj_wall_col)) {
         x += sign(hsp);
     }
     hsp = -.5 * hsp
@@ -131,8 +131,8 @@ x += hsp;
 
 //if there is a wall beneath/above player and player is moving in that direction,
 //move as far in the direction of the wall as possible.
-if(place_meeting(x, y + vsp, obj_wall)) {
-    while(!place_meeting(x, y + sign(vsp), obj_wall)) {
+if(place_meeting(x, y + vsp, obj_wall_col)) {
+    while(!place_meeting(x, y + sign(vsp), obj_wall_col)) {
         y += sign(vsp);
     }
     vsp = -.5 *vsp;
