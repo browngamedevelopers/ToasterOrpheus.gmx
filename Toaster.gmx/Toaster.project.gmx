@@ -63,6 +63,8 @@
       <object>objects\obj_wall</object>
       <object>objects\obj_roomEnd</object>
       <object>objects\obj_spikes</object>
+      <object>objects\obj_gearLeft</object>
+      <object>objects\obj_gearRight</object>
     </objects>
     <object>objects\obj_fadeOut</object>
     <object>objects\obj_gameOverFade</object>
