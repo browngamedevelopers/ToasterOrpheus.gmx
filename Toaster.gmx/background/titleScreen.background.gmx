@@ -15,5 +15,5 @@
   <For3D>0</For3D>
   <width>1024</width>
   <height>768</height>
-  <data>images\background0.png</data>
+  <data>images\titleScreen.png</data>
 </background>

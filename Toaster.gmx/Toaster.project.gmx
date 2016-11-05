@@ -10,46 +10,66 @@
   </sounds>
   <sprites name="sprites">
     <sprite>sprites\spr_toaster</sprite>
-    <sprite>sprites\spr_wall</sprite>
-    <sprite>sprites\spr_toast</sprite>
-    <sprite>sprites\spr_flopToast</sprite>
-    <sprite>sprites\spr_flameToast</sprite>
-    <sprite>sprites\spr_burntToast</sprite>
+    <sprites name="Toast Sprites">
+      <sprite>sprites\spr_toast</sprite>
+      <sprite>sprites\spr_flopToast</sprite>
+      <sprite>sprites\spr_flameToast</sprite>
+      <sprite>sprites\spr_burntToast</sprite>
+    </sprites>
+    <sprites name="Enemy Sprites">
+      <sprite>sprites\spr_fridge</sprite>
+      <sprite>sprites\spr_microwave</sprite>
+      <sprite>sprites\spr_blender</sprite>
+      <sprite>sprites\spr_blenderBlade</sprite>
+    </sprites>
     <sprites name="ToastReadinessBar">
       <sprite>sprites\spr_slider_element</sprite>
       <sprite>sprites\spr_bar</sprite>
       <sprite>sprites\spr_bar_location_indicator</sprite>
     </sprites>
-    <sprite>sprites\spr_fridge</sprite>
-    <sprite>sprites\microwave</sprite>
-    <sprite>sprites\spr_roomEnd</sprite>
+    <sprites name="Environment Sprites">
+      <sprite>sprites\spr_roomEnd</sprite>
+      <sprite>sprites\spr_spikes</sprite>
+      <sprite>sprites\spr_wall</sprite>
+    </sprites>
     <sprite>sprites\spr_fadeOut</sprite>
-    <sprite>sprites\spr_spikes</sprite>
-    <sprite>sprites\spr_blender</sprite>
-    <sprite>sprites\spr_blenderBlade</sprite>
     <sprite>sprites\spr_gears</sprite>
+    <sprite>sprites\spr_retry</sprite>
+    <sprite>sprites\spr_start</sprite>
   </sprites>
   <backgrounds name="background">
-    <background>background\background0</background>
-    <background>background\background2</background>
+    <background>background\world1</background>
+    <background>background\endScreen</background>
+    <background>background\titleScreen</background>
   </backgrounds>
   <paths name="paths"/>
   <objects name="objects">
     <object>objects\obj_toaster</object>
-    <object>objects\obj_wall</object>
-    <object>objects\obj_toast</object>
-    <object>objects\obj_flameToast</object>
-    <object>objects\obj_burntToast</object>
-    <object>objects\obj_flopToast</object>
-    <object>objects\obj_fridge</object>
-    <object>objects\obj_microwave</object>
-    <object>objects\obj_roomEnd</object>
-    <object>objects\obj_loadingFridge</object>
+    <objects name="Toast Objects">
+      <object>objects\obj_toast</object>
+      <object>objects\obj_burntToast</object>
+      <object>objects\obj_flameToast</object>
+      <object>objects\obj_flopToast</object>
+    </objects>
+    <objects name="Enemy Objects">
+      <object>objects\obj_fridge</object>
+      <object>objects\obj_microwave</object>
+      <object>objects\obj_loadingFridge</object>
+      <object>objects\obj_blender</object>
+      <object>objects\obj_blenderBlade</object>
+    </objects>
+    <objects name="Environmeny Objects">
+      <object>objects\obj_wall</object>
+      <object>objects\obj_roomEnd</object>
+      <object>objects\obj_spikes</object>
+    </objects>
     <object>objects\obj_fadeOut</object>
     <object>objects\obj_gameOverFade</object>
-    <object>objects\obj_blender</object>
+    <object>objects\obj_retry</object>
+    <object>objects\obj_start</object>
   </objects>
   <rooms name="rooms">
+    <room>rooms\titleRoom</room>
     <room>rooms\room1</room>
     <room>rooms\LoadingScreen</room>
     <room>rooms\room2</room>
