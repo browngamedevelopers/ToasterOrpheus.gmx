@@ -57,6 +57,7 @@
       <object>objects\obj_loadingFridge</object>
       <object>objects\obj_blender</object>
       <object>objects\obj_blenderBlade</object>
+      <object>objects\obj_enemy_deathtouch</object>
     </objects>
     <objects name="Environmeny Objects">
       <object>objects\obj_wall</object>
