@@ -48,7 +48,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_angle += 100 / (sprite_get_width(spr_gears) * image_xscale);
+            <string>image_angle += (100 / (sprite_get_width(spr_gears) * image_xscale)) * global.deltaT;
 </string>
           </argument>
         </arguments>

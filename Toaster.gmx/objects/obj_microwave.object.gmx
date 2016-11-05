@@ -49,7 +49,7 @@
           <argument>
             <kind>1</kind>
             <string>if(distance_to_object(obj_toaster) &lt; 75){
-    image_speed = .4;
+    image_speed = .4 * global.deltaT;
 }else{
     image_index = 0;
     image_speed = 0;
