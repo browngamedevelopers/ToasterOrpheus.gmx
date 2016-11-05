@@ -127,6 +127,8 @@
     <instance objName="obj_box1" x="471" y="630" name="inst_51647457" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall2" x="183" y="372" name="inst_71DED230" locked="0" code="" scaleX="0.391862958669662" scaleY="0.450536340475082" colour="4294967295" rotation="0"/>
     <instance objName="obj_ceiling" x="411" y="438" name="inst_4CE2947E" locked="0" code="" scaleX="0.239285707473755" scaleY="0.237687364220619" colour="4294967295" rotation="0"/>
+    <instance objName="obj_gearRight" x="450" y="573" name="inst_7464B251" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_gearLeft" x="507" y="573" name="inst_198882DC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

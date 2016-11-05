@@ -57,6 +57,9 @@
     <background>background\titleScreen</background>
   </backgrounds>
   <paths name="paths"/>
+  <shaders name="shaders">
+    <shader type="GLSLES">shaders\shader0.shader</shader>
+  </shaders>
   <objects name="objects">
     <object>objects\obj_toaster</object>
     <objects name="Toast Objects">
@@ -91,6 +94,8 @@
         <object>objects\obj_floor2</object>
         <object>objects\obj_floor3</object>
       </objects>
+      <object>objects\obj_gearLeft</object>
+      <object>objects\obj_gearRight</object>
     </objects>
     <object>objects\obj_fadeOut</object>
     <object>objects\obj_gameOverFade</object>
