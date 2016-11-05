@@ -71,6 +71,7 @@
       <object>objects\obj_toast</object>
       <object>objects\obj_burntToast</object>
       <object>objects\obj_flameToast</object>
+      <object>objects\obj_flopToast</object>
     </objects>
     <objects name="Enemy Objects">
       <object>objects\obj_fridge</object>
