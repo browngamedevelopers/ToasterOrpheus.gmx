@@ -178,7 +178,14 @@ if(mouse_check_button(mb_left) &amp;&amp; isLaunching){
         audio_play_sound(snd_brun,1,false);
         
         heat = 20;
-        burntToast = instance_create(x + (60 * ((mouse_x - x) / x)), y + (60 * ((mouse_y - y) / y)), obj_burntToast);
+        
+        var dist = distance_to_point(mouse_x, mouse_y)
+        burntToast = 
+        instance_create(
+        x + (25 * ((mouse_x - x) / dist)), 
+        y + (25 * ((mouse_y - y) / dist)), 
+        obj_burntToast);
+        
         burntToast.direction = point_direction(x, y, mouse_x, mouse_y);
         burntToast.image_angle = point_direction(x, y, mouse_x, mouse_y);
         burntToast.speed = 0;
@@ -197,7 +204,13 @@ if(mouse_check_button_released(mb_left) &amp;&amp; isLaunching) {
     
         audio_play_sound(snd_brun,1,false);
         
-        burntToast = instance_create(x + (60 * ((mouse_x - x) / x)), y + (60 * ((mouse_y - y) / y)), obj_burntToast);
+        var dist = distance_to_point(mouse_x, mouse_y)
+        burntToast = 
+        instance_create(
+        x + (25 * ((mouse_x - x) / dist)), 
+        y + (25 * ((mouse_y - y) / dist)), 
+        obj_burntToast);
+        
         burntToast.direction = point_direction(x, y, mouse_x, mouse_y);
         burntToast.image_angle = point_direction(x, y, mouse_x, mouse_y);
         burntToast.speed = 0;

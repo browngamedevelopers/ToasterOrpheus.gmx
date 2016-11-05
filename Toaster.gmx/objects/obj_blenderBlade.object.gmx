@@ -99,7 +99,7 @@ var dvy = vsp * global.deltaT;
 
 //rotate when not colided
 if(hsp != 0 or vsp != 0){
-    image_angle = image_angle + spin_speed
+    image_angle = image_angle + spin_speed * global.deltaT;
 }
 
 //If there is a wall/block to the right/left and player is moving in that direction,
