@@ -50,12 +50,7 @@ image_alpha = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(global.roomIndex == 1) {
-    global.previousRoom = room1;
-}
-else if(global.roomIndex == 2) {
-    global.previousRoom = room2;
-}
+            <string>global.previousRoom = room;
 if(obj_gameOverFade.image_alpha &lt; 1) {
     obj_gameOverFade.image_alpha += .02;
 }

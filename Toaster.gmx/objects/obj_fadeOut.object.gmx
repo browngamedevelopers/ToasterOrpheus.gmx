@@ -54,7 +54,7 @@ image_alpha = 0;
     obj_fadeOut.image_alpha += .02;
 }
 if(obj_fadeOut.image_alpha == 1) {
-    global.roomIndex += .5;
+    global.previousRoom = room;
     room_goto_next();
 }
 
