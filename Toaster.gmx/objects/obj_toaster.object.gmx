@@ -285,15 +285,20 @@ move = key_left + key_right;
 
 image_speed =  abs(move) * .35;
 if(move &gt; 0){
-    if(image_index &gt; 23) {
-        imagestart = image_index - 16;
+    if(image_index &gt;= 24 &amp;&amp; image_index &lt;= 39) {
+        imagestart = 23 - (image_index - 24);
     }
     else {
         imagestart = 8;
     }
     imageend = 23;
 }else if(move &lt; 0){
-    imagestart = 24;
+    if(image_index &lt;= 23 &amp;&amp; image_index &gt;= 8) {
+        imagestart = 24 + (23 - image_index);
+    }
+    else {
+        imagestart = 24;
+    }
     imageend = 39;
 }
 
