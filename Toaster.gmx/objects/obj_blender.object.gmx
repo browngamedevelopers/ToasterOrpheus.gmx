@@ -58,6 +58,7 @@
         vsp = sin(angle) * sp;
     }
 }
+image_speed = .4 * global.deltaT;
 </string>
           </argument>
         </arguments>
