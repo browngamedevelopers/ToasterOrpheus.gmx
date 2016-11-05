@@ -71,7 +71,6 @@
       <object>objects\obj_toast</object>
       <object>objects\obj_burntToast</object>
       <object>objects\obj_flameToast</object>
-      <object>objects\obj_fridge</object>
     </objects>
     <objects name="Enemy Objects">
       <object>objects\obj_fridge</object>
@@ -106,6 +105,7 @@
       </objects>
     </objects>
     <object>objects\obj_fadeOut</object>
+    <object>objects\obj_loadingFridge</object>
     <object>objects\obj_gameOverFade</object>
     <object>objects\obj_retry</object>
     <object>objects\obj_start</object>
