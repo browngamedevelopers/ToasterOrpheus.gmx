@@ -44,6 +44,7 @@
   </backgrounds>
   <paths name="paths"/>
   <objects name="objects">
+    <object>objects\obj_toaster</object>
     <objects name="Toast Objects">
       <object>objects\obj_toast</object>
       <object>objects\obj_burntToast</object>
