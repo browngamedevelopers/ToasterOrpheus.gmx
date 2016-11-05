@@ -39,6 +39,8 @@ imagestart = 8;
 imageend = 23;
 alarmOn = false;
 last_move = 0;
+
+shader_set(shader0);
 </string>
           </argument>
         </arguments>
@@ -471,9 +473,7 @@ if(heat &gt; 0){
     self.image_blend = c_white;
 }
 
-shader_set(shader0);
 draw_self();
-shader_reset();
 
 if(in_slow_motion){
     draw_sprite(spr_bar, 0, barX, barY)

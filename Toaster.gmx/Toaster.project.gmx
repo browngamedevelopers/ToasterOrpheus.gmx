@@ -45,6 +45,11 @@
         <sprite>sprites\floor2</sprite>
         <sprite>sprites\floor3</sprite>
       </sprites>
+      <sprites name="rubble">
+        <sprite>sprites\spr_rubble1</sprite>
+        <sprite>sprites\spr_rubble2</sprite>
+        <sprite>sprites\spr_rubble3</sprite>
+      </sprites>
     </sprites>
     <sprite>sprites\spr_fadeOut</sprite>
     <sprite>sprites\spr_gears</sprite>
@@ -66,12 +71,12 @@
       <object>objects\obj_toast</object>
       <object>objects\obj_burntToast</object>
       <object>objects\obj_flameToast</object>
-      <object>objects\obj_flopToast</object>
+      <object>objects\obj_fridge</object>
     </objects>
     <objects name="Enemy Objects">
       <object>objects\obj_fridge</object>
       <object>objects\obj_microwave</object>
-      <object>objects\obj_loadingFridge</object>
+      <object>objects\obj_blender</object>
       <object>objects\obj_blender</object>
       <object>objects\obj_blenderBlade</object>
       <object>objects\obj_enemy_deathtouch</object>
@@ -83,8 +88,6 @@
       <object>objects\obj_spikes</object>
       <objects name="props">
         <object>objects\obj_box1</object>
-        <object>objects\obj_wall1</object>
-        <object>objects\obj_wall2</object>
         <object>objects\obj_box2</object>
         <object>objects\obj_box3</object>
         <object>objects\obj_ceiling</object>
@@ -96,6 +99,11 @@
       </objects>
       <object>objects\obj_gearLeft</object>
       <object>objects\obj_gearRight</object>
+      <objects name="rubble">
+        <object>objects\obj_rubble1</object>
+        <object>objects\obj_rubble2</object>
+        <object>objects\obj_rubble3</object>
+      </objects>
     </objects>
     <object>objects\obj_fadeOut</object>
     <object>objects\obj_gameOverFade</object>
