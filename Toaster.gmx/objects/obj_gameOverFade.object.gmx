@@ -55,7 +55,7 @@ if(obj_gameOverFade.image_alpha &lt; 1) {
     obj_gameOverFade.image_alpha += .02;
 }
 if(obj_gameOverFade.image_alpha == 1) {
-    room_goto(gameOver);
+    room_goto(gameOverRoom);
 }
 
 </string>

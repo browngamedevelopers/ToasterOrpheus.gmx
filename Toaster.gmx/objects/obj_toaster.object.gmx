@@ -41,6 +41,11 @@ alarmOn = false;
 last_move = 0;
 
 shader_set(shader0);
+cpos = shader_get_uniform(shader0, "cpos");
+d = shader_get_uniform(shader0, "d");
+shader_set_uniform_f(cpos, x, y);
+shader_set_uniform_f(cpos, 0);
+
 </string>
           </argument>
         </arguments>
@@ -475,6 +480,13 @@ if(heat &gt; 0){
     self.image_blend = c_white;
 }
 
+shader_set(shader0);
+if(in_slow_motion){
+    shader_set_uniform_f(d, time_toasting/150);
+}else{
+    shader_set_uniform_f(d, 0);
+}
+shader_set_uniform_f(cpos, x, y);
 draw_self();
 
 if(in_slow_motion){

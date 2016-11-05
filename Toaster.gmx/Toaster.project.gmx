@@ -77,7 +77,6 @@
       <object>objects\obj_fridge</object>
       <object>objects\obj_microwave</object>
       <object>objects\obj_blender</object>
-      <object>objects\obj_blender</object>
       <object>objects\obj_blenderBlade</object>
       <object>objects\obj_enemy_deathtouch</object>
     </objects>
@@ -88,6 +87,8 @@
       <object>objects\obj_spikes</object>
       <objects name="props">
         <object>objects\obj_box1</object>
+        <object>objects\obj_wall1</object>
+        <object>objects\obj_wall2</object>
         <object>objects\obj_box2</object>
         <object>objects\obj_box3</object>
         <object>objects\obj_ceiling</object>
@@ -115,8 +116,8 @@
     <room>rooms\titleRoom</room>
     <room>rooms\room1</room>
     <room>rooms\LoadingScreen</room>
-    <room>rooms\room2</room>
-    <room>rooms\gameOver</room>
+    <room>rooms\room2_new</room>
+    <room>rooms\gameOverRoom</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>
