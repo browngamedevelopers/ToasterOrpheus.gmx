@@ -116,7 +116,9 @@
     <room>rooms\titleRoom</room>
     <room>rooms\room1</room>
     <room>rooms\LoadingScreen</room>
-    <room>rooms\room2_new</room>
+    <room>rooms\room2</room>
+    <room>rooms\LoadingScreen2</room>
+    <room>rooms\room3</room>
     <room>rooms\gameOverRoom</room>
   </rooms>
   <help>

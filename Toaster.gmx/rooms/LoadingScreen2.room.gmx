@@ -8,7 +8,7 @@
   <isometric>0</isometric>
   <speed>30</speed>
   <persistent>0</persistent>
-  <colour>16384</colour>
+  <colour>4227072</colour>
   <showcolour>-1</showcolour>
   <code></code>
   <enableViews>0</enableViews>
@@ -51,8 +51,10 @@
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="1024" hview="768" xport="0" yport="0" wport="1024" hport="768" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
   </views>
   <instances>
-    <instance objName="obj_loadingFridge" x="832" y="384" name="inst_087DCDD2" locked="0" code="" scaleX="1.98837208747864" scaleY="2.0652174949646" colour="4294967295" rotation="0"/>
-    <instance objName="obj_loadingFridge" x="192" y="384" name="inst_3F2B71D6" locked="0" code="" scaleX="-1.99000000953674" scaleY="2.0652174949646" colour="4294967295" rotation="0"/>
+    <instance objName="obj_loadingFridge" x="224" y="192" name="inst_09AE85C2" locked="0" code="" scaleX="-1.42999994754791" scaleY="1.7173912525177" colour="4294967295" rotation="0"/>
+    <instance objName="obj_loadingFridge" x="224" y="576" name="inst_94EE6F18" locked="0" code="" scaleX="-1.42999994754791" scaleY="1.7173912525177" colour="4294967295" rotation="0"/>
+    <instance objName="obj_loadingFridge" x="832" y="576" name="inst_529DDDEC" locked="0" code="" scaleX="1.43023252487183" scaleY="1.7173912525177" colour="4294967295" rotation="0"/>
+    <instance objName="obj_loadingFridge" x="832" y="192" name="inst_B3235B0B" locked="0" code="" scaleX="1.43023252487183" scaleY="1.7173912525177" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>
