@@ -53,9 +53,8 @@
   <instances>
     <instance objName="obj_wall" x="45" y="-9" name="inst_CF002BA6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="117" y="-9" name="inst_E0239852" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_roomEnd" x="987" y="150" name="inst_087F42F7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_microwave" x="645" y="675" name="inst_922F8109" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_blender" x="759" y="342" name="inst_B43C82B0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_roomEnd" x="951" y="111" name="inst_087F42F7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_blender" x="438" y="348" name="inst_B43C82B0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_toaster" x="168" y="579" name="inst_67FD1D61" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_box1" x="471" y="630" name="inst_51647457" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ceiling" x="552" y="495" name="inst_4CE2947E" locked="0" code="" scaleX="0.471428573131561" scaleY="0.28999999165535" colour="4294967295" rotation="0"/>
@@ -82,6 +81,7 @@
     <instance objName="obj_rubble2" x="330" y="126" name="inst_AA90774F" locked="0" code="" scaleX="0.547445237636566" scaleY="0.31288343667984" colour="4294967295" rotation="-185"/>
     <instance objName="obj_rubble2" x="1179" y="591" name="inst_A55E5690" locked="0" code="" scaleX="0.547445237636566" scaleY="0.31288343667984" colour="4294967295" rotation="-185"/>
     <instance objName="obj_fridge" x="900" y="327" name="inst_F72A794D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_wall1" x="1005" y="-111" name="inst_24A07123" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>
